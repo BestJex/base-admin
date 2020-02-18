@@ -1,0 +1,43 @@
+server:
+  port: 8000
+  servlet:
+     context-path: /base
+
+spring:
+  freemarker:
+    check-template-location: false
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+  #配置 Jpa
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: true
+
+  redis:
+    #数据库索引
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    #连接超时时间
+    timeout: 5000
+
+
+#登录图形验证码有效时间/分钟
+loginCode:
+  expiration: 2
+
+#密码加密传输，前端公钥加密，后端私钥解密
+rsa:
+  private_key: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKW4xPRgoth3YLHi2uKWGX/n7B91Iavx28c6a3WAlA5o7EmEktfBluHPoj/VFr3LSsLODZkYz58Kihja2actrfm95DBKzXBNNQ1/L5xUPuC0YqEmR0pK/etycZC/U9WD2N/pfIObwvx7rPLgLXZPOMngt6WjoZ9Uv+JB6fBDMKEtAgMBAAECgYAgZwYrehGdHYpMfbyqfQqzVZd3dyGESx/bznJgYSmRv7YjkcZcZT+pGz3wGSv/JBaUDFHgU1eVEyx5O6E+7NGNKKQXKU/abrvYVEHCO7C+tLnsyk8Eozl9lcXLf3r4TLzfdvdNmMQ4pRmNQW4AyQfVHmz9K+oDbMHMEuFWOQahyQJBANDJ90+QhrROBdLURlSiLnz6HbzK9kkYgPfUHVyJsvjDGOcDFOdmv3dS//z7lO0ezyG2o92i5c12mu39WnHkr4cCQQDLMcz90JiYGQi1yOLlOK144k9N621+oxy9HV2LVfyCwC/bs46/gwH5o57/5fWKXXZyFf31o6M3qzwgZG6c+g6rAkEAm62cK8VVy2dJzFPfRQfQpftQ5Q5o6UPOFfwhEHjT68x86vNPSONB7FUE7rsf5lZMl5S5Rm9J7hN7neyE3dtoTQJBAIUA2h+htOCKMmtbTTmhedtQt3xXiFqGRj97w0l7RUgIqMr0o5G0HUzczyzNx4WEXA2dW5i4PhQoX7kMRGM4QvUCQG3epOUkJtN00OlAQJB3gHxiDN1IPr24rJz9EHmv/gkdvntJ7dGSFbGwubTY4k78RzFrxj/pNSLddG61Tod0qpo=
+
+

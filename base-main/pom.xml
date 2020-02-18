@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jex</groupId>
+        <artifactId>base-admin</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>base-main</artifactId>
+    <name>核心业务模块（系统启动入口）</name>
+
+
+    <dependencies>
+
+        <!-- login模块包含了 rbac 模块，rbac 模块包含了tools 模块，tools 模块包含了common 和 log 模块 -->
+        <dependency>
+            <groupId>com.jex</groupId>
+            <artifactId>base-login</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- system 模块包含了 rbac 模块 -->
+        <dependency>
+            <groupId>com.jex</groupId>
+            <artifactId>base-system</artifactId>
+            <version>1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.jex</groupId>
+                    <artifactId>base-rbac</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 跳过单元测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
